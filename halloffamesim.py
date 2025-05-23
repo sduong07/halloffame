@@ -4,6 +4,7 @@ import numpy as np
 import random
 from collections import defaultdict
 import base64
+from pathlib import Path
 
 # Set page config
 st.set_page_config(page_title="NBA Hall of Fame Simulator", layout="wide")
@@ -15,7 +16,8 @@ def get_base64_of_bin_file(bin_file_path):
     return base64.b64encode(data).decode()
 
 # Load your local image (make sure it's in the same directory or provide the full path)
-img_path = "./background.jpg"  # Change this to your image filename
+img_path = Path(__file__).parent / "assets" / "background.jpg" 
+#img_path = "background.jpg"  # Change this to your image filename
 img_base64 = get_base64_of_bin_file(img_path)
 
 # Create the CSS to set the background image
