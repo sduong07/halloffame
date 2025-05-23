@@ -1,0 +1,6 @@
+streamlit
+pandas
+numpy
+random
+base64
+defaultdict
