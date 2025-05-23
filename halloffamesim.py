@@ -16,15 +16,18 @@ def get_base64_of_bin_file(bin_file_path):
     return base64.b64encode(data).decode()
 
 # Load your local image (make sure it's in the same directory or provide the full path)
+image_url = "https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg"
 img_path = Path(__file__).parent / "assets" / "background.jpg" 
 #img_path = "background.jpg"  # Change this to your image filename
 img_base64 = get_base64_of_bin_file(img_path)
+
+#    background-image: url("data:image/jpg;base64,{img_base64}");
 
 # Create the CSS to set the background image
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-    background-image: url("data:image/jpg;base64,{img_base64}");
+    background-image: url("{image_url}");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
