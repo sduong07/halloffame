@@ -15,7 +15,7 @@ def get_base64_of_bin_file(bin_file_path):
     return base64.b64encode(data).decode()
 
 # Load your local image (make sure it's in the same directory or provide the full path)
-img_path = "background.jpg"  # Change this to your image filename
+img_path = "./background.jpg"  # Change this to your image filename
 img_base64 = get_base64_of_bin_file(img_path)
 
 # Create the CSS to set the background image
