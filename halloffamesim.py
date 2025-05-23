@@ -149,16 +149,9 @@ def simulate_game(team1, team2):
 
 results = []
 
-if st.button("Run Simulation"):
-	with st.spinner("Simulating games..."):
-		for _ in range(1000):
-			result = simulate_game(team1_df, team2_df)
-			results.append(result['FinalScore'])
-	st.success("Simulation complete!")
-
-# for _ in range(1000):  # 1000 simulations
-#     result = simulate_game(team1_df, team2_df)
-#     results.append(result['FinalScore'])
+for _ in range(1000):  # 1000 simulations
+    result = simulate_game(team1_df, team2_df)
+    results.append(result['FinalScore'])
 
 
 #Example: calculate win probability
