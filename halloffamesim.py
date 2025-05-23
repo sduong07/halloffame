@@ -9,6 +9,26 @@ from pathlib import Path
 # Set page config
 st.set_page_config(page_title="NBA Hall of Fame Simulator", layout="wide")
 
+def set_bg_local(image_file):
+    with open(image_file, "rb") as f:
+        data = f.read()
+    encoded = base64.b64encode(data).decode()
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/jpg;base64,{encoded}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+set_bg_local("background.jpg")
+
 # Function to convert image to base64
 def get_base64_of_bin_file(bin_file_path):
     with open(bin_file_path, 'rb') as f:
