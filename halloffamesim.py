@@ -29,33 +29,6 @@ def set_bg_local(image_file):
 
 set_bg_local("background.jpg")
 
-# Function to convert image to base64
-def get_base64_of_bin_file(bin_file_path):
-    with open(bin_file_path, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-# Load your local image (make sure it's in the same directory or provide the full path)
-image_url = "https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg"
-img_path = Path(__file__).parent / "assets" / "background.jpg" 
-#img_path = "background.jpg"  # Change this to your image filename
-img_base64 = get_base64_of_bin_file(img_path)
-
-#    background-image: url("data:image/jpg;base64,{img_base64}");
-
-# Create the CSS to set the background image
-page_bg_img = f"""
-<style>
-[data-testid="stAppViewContainer"] > .main {{
-    background-image: url("{image_url}");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}}
-</style>
-"""
-
 top_bar_css = """
 <style>
 header[data-testid="stHeader"] {
@@ -65,7 +38,6 @@ header[data-testid="stHeader"] {
 """
 
 # Inject CSS
-st.markdown(page_bg_img, unsafe_allow_html=True)
 st.markdown(top_bar_css, unsafe_allow_html=True)
 
 
