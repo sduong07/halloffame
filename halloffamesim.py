@@ -147,35 +147,42 @@ def simulate_game(team1, team2):
     }
 
 
-results = []
+with st.spinner("Simulating..."):
+	results = []
 
-for _ in range(1000):  # 1000 simulations
-    result = simulate_game(team1_df, team2_df)
-    results.append(result['FinalScore'])
-
-
-#Example: calculate win probability
-team1_wins = sum(1 for score in results if score[0] > score[1])
-print(f"Team 1 win probability: {team1_wins / len(results) * 100:.1f}%")
-
-def print_game_stats(result):
-    print("🏀 Final Score")
-    print(f"Team 1: {result['FinalScore'][0]}  |  Team 2: {result['FinalScore'][1]}")
-    print("\n📊 Player Stats\n")
-
-    print("=== Team 1 ===")
-    for player, stats in result['Team1'].items():
-        print(f"{player:20} - PTS: {stats['PTS']:>2} | AST: {stats['AST']:>2} | TRB: {stats['TRB']:>2}")
-
-    print("\n=== Team 2 ===")
-    for player, stats in result['Team2'].items():
-        print(f"{player:20} - PTS: {stats['PTS']:>2} | AST: {stats['AST']:>2} | TRB: {stats['TRB']:>2}")
+	for _ in range(1000):  # 1000 simulations
+	    result = simulate_game(team1_df, team2_df)
+	    results.append(result['FinalScore'])
 
 
-result = simulate_game(team1_df, team2_df)
-gameresult= print_game_stats(result)
+	#Example: calculate win probability
+	team1_wins = sum(1 for score in results if score[0] > score[1])
+	print(f"Team 1 win probability: {team1_wins / len(results) * 100:.1f}%")
+
+	def print_game_stats(result):
+	    print("🏀 Final Score")
+	    print(f"Team 1: {result['FinalScore'][0]}  |  Team 2: {result['FinalScore'][1]}")
+	    print("\n📊 Player Stats\n")
+
+	    print("=== Team 1 ===")
+	    for player, stats in result['Team1'].items():
+	        print(f"{player:20} - PTS: {stats['PTS']:>2} | AST: {stats['AST']:>2} | TRB: {stats['TRB']:>2}")
+
+	    print("\n=== Team 2 ===")
+	    for player, stats in result['Team2'].items():
+	        print(f"{player:20} - PTS: {stats['PTS']:>2} | AST: {stats['AST']:>2} | TRB: {stats['TRB']:>2}")
+
+
+	result = simulate_game(team1_df, team2_df)
+	gameresult= print_game_stats(result)
+
+
+
+
 
 st.subheader("🏀 Final Score")
+
+
 st.write(f"**Team 1:** {result['FinalScore'][0]}  |  **Team 2:** {result['FinalScore'][1]}")
 
 st.subheader("📊 Player Stats")
