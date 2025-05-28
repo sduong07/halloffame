@@ -195,4 +195,5 @@ st.markdown("### 🟥 Team 2")
 for player, stats in result['Team2'].items():
     st.write(f"**{player}** — PTS: {stats['PTS']} | AST: {stats['AST']} | TRB: {stats['TRB']}")
 
-
+if st.button("🔄 to randomly select another 10 players"):
+    st.rerun()
