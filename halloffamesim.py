@@ -9,6 +9,16 @@ from pathlib import Path
 # Set page config
 st.set_page_config(page_title="NBA Hall of Fame Simulator", layout="wide")
 
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+
 def set_bg_local(image_file):
     with open(image_file, "rb") as f:
         data = f.read()
